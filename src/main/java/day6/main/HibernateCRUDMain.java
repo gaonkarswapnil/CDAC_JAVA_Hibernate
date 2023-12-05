@@ -47,6 +47,21 @@ public class HibernateCRUDMain {
 		factory.close();
 	}
 
+	private static void updateRestaurant() {
+		// TODO Auto-generated method stub
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.openSession();
+		Class<Restaurant> entityClassType = Restaurant.class;
+		Serializable entityId = 101;
+		Restaurant foundRestaurant = session.load(entityClassType, entityId);
+		Transaction  tx = session.beginTransaction();
+		foundRestaurant.setName("Taj Hotel");
+		foundRestaurant.setCuisine("5 star");
+		tx.commit();
+		session.close();
+		factory.close();
+		System.out.println("Record Updated");
+	}
 
 	private static void createNewRestaurant() {
 		// TODO Auto-generated method stub
@@ -89,8 +104,8 @@ public class HibernateCRUDMain {
 		// TODO Auto-generated method stub
 //		createNewRestaurant();
 //		showOneRestaurant();
-		deleteRestaurant();
-		
+//		deleteRestaurant();
+		updateRestaurant();
 	}
 
 
