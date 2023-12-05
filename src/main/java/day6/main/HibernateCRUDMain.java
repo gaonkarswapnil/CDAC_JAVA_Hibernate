@@ -12,6 +12,21 @@ import day6.utils.HibernateUtils;
 
 public class HibernateCRUDMain {
 	
+	private static void deleteRestaurant() {
+		// TODO Auto-generated method stub
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.openSession();
+		Class<Restaurant> entityClassType = Restaurant.class;
+		Serializable entityId = 106;
+		Restaurant foundRestaurant = session.load(entityClassType, entityId);
+		Transaction tx = session.beginTransaction();
+			session.delete(foundRestaurant);
+		tx.commit();
+		session.close();
+		factory.close();
+		System.out.println("Record deleted");
+	}
+	
 	private static void showOneRestaurant() {
 		// TODO Auto-generated method stub
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -73,8 +88,8 @@ public class HibernateCRUDMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		createNewRestaurant();
-		showOneRestaurant();
-
+//		showOneRestaurant();
+		deleteRestaurant();
 		
 	}
 
