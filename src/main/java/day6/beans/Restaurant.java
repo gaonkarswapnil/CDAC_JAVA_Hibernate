@@ -6,7 +6,7 @@ public class Restaurant {
 	private String cuisine;
 	private int branchCount;
 	public Restaurant() {
-		System.out.println("Inside Restaurant()");
+//		System.out.println("Inside Restaurant()");
 	}
 	public Restaurant(int restaurantId, String name, String cuisine, int branchCount) {
 		this.restaurantId = restaurantId;
